@@ -33,7 +33,7 @@ class Simulation:
         outp = open(name[0] + '.txt', 'w')
         solution = ""
         for car in self.cars:
-            solution += "%d " % car.ID
+            solution += "%d " % len(car.rides)
             for ride in car.rides:
                 solution += "%d " % ride.ID
 
