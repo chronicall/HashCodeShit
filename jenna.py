@@ -10,12 +10,14 @@ class Simulation:
 		self.cars = []
 		self.unassigned_rides = []
 
+
 	# TODO: write the solution to file.
 	# Do this by looping over each car in cars.
 	# car_ID_1 ride_id_0 ride_id_1 ... ride_id_n
 	# ...
 	# car_ID_F ride_id_0 ... ride_id_n
 	def write_solution_to_file(self):
+		print("TODO: implement write solution to file method of Simulation object")
 		pass
 
 
@@ -40,10 +42,11 @@ class Car:
 
 
 if __name__ == "__main__":
-
+	print(" ")
 	print("----------------------------")
 	print("Hashcode 2018 TEAM BING WHOO")
 	print("----------------------------")
+	print(" ")
 
 	# TODO: Open the file. Assign variables R, C, F, N, B, T.
 
@@ -64,4 +67,14 @@ if __name__ == "__main__":
 
 
 	# TODO: Generate the ride objects and store them in Simulation.rides.
+
+
+
+	# TODO: COMPUTATION.
+	# SOLVE THE PROBLEM.
+
+
+
+	# TODO: Print our solution to file.
+	simulation.write_solution_to_file()
 	
