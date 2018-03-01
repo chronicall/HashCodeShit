@@ -1,0 +1,2 @@
+# HashCodeShit
+Shit for HashCode
