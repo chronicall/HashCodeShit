@@ -30,6 +30,8 @@ class Ride:
 		self.y = column_of_finish
 		self.s = earliest_start
 		self.f = latest_finish
+		self.distance = self.compute_distance()
+		self.latest_start = self.latest_finish - self.distance
 
 	# Compute the distance of this ride (manhattan distance)
 	def compute_distance(self):	
@@ -57,21 +59,25 @@ if __name__ == "__main__":
 	B = 0
 	T = 0
 
-	# TODO: create a simulation object.
+	# Create a simulation object.
 	simulation = Simulation(R, C, F, N, B, T)
 	
 
 	# TODO: Generate the car objects and store them in Simulation.cars. 
 	# eg for i in range(1,Simulation.F+1):
-		# 
+		# generate car object and append to simulation.cars
 
 
 	# TODO: Generate the ride objects and store them in Simulation.rides.
+	# eg for i in range(0,simulation.N)
+		# generate a ride object and append to simulation.unassigned_rides
+
 
 
 
 	# TODO: COMPUTATION.
 	# SOLVE THE PROBLEM.
+	# ?????????????????????????????
 
 
 
