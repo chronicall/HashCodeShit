@@ -12,9 +12,9 @@ class Simulation:
         self.F = F # number of vehicles in the fleet
         self.N = N # number of rides
         self.B = B # per-ride bonus for starting the ride on time
+        self.T = T # total amount of steps in the simulation
         self.cars = []
         self.unassigned_rides = []
-
 
         # TODO: write the solution to file.
         # Do this by looping over each car in cars.
@@ -25,6 +25,18 @@ class Simulation:
     def write_solution_to_file(self):
         print("TODO: implement write solution to file method of Simulation object")
         pass
+
+    def compute_points(self):
+        total_points = 0
+        for car in self.cars:
+            time_in_simulation = 0
+            for ride in car.rides:
+                if ride.earliest_start > time_in_simulation
+                    total_points += ride.distance + self.B
+                else:
+                    total_points += ride.distance
+
+                time_in_simulation += ride.distance
 
 
 class Ride:
@@ -45,18 +57,19 @@ class Ride:
 
 class Car:
 	def __init__(self, ID):
-		self.ID = ID # the index of this car. From 1 to Simulation.F.
-		self.rides = [] # The simulation should populate this list with the rides that a car will take. 
-		self.column = 0
-		self.row = 0
-		self.simulation_time = 0
+            self.ID = ID # the index of this car. From 1 to Simulation.F.
+            self.rides = [] # The simulation should populate this list with the rides that a car will take.
+            self.column = 0
+            self.row = 0
+            self.simulation_time = 0
 
 	def time_wasted_on_ride(self, ride):
+            pass
 
-	def reset(self)
-		column = 0
-		row = 0
-		simulatin_time = 0
+        def reset(self):
+            column = 0
+            row = 0
+            simulatin_time = 0
 
 
 
@@ -72,7 +85,7 @@ if __name__ == "__main__":
 
     # TODO: Open the file. Assign variables R, C, F, N, B, T.
 
-    R, C, F, N, B, T = p.parseSimulator()
+    R, C, F, N, B, T = p.parse_simulator()
     print "Rows: %d" % R
     print "Columns: %d" % C
     print "Vehicles: %d" % F
@@ -81,9 +94,10 @@ if __name__ == "__main__":
     print "Time: %d" % T
     print ""
 
-    rides = p.parseRides()
+    rides = p.parse_rides()
 
     for ride in rides:
+        # create Ride objects and add to simulation.unassigned_rides
         print ride
 
     # TODO: create a simulation object.
