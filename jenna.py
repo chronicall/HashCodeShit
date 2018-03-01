@@ -21,10 +21,9 @@ class Simulation:
         # car_ID_1 ride_id_0 ride_id_1 ... ride_id_n
         # ...
         # car_ID_F ride_id_0 ... ride_id_n
-
-    def write_solution_to_file(self):
-        print("TODO: implement write solution to file method of Simulation object")
-        pass
+        def write_solution_to_file(self):
+            print("TODO: implement write solution to file method of Simulation object")
+            pass
 
 
 class Ride:
@@ -82,18 +81,11 @@ class Car:
 
 		return time_wasted
 		
-		
-		
-
-		pass
 
 	def update(self, t, column, row):
 		self.simulation_time = self.simulation_time + t
 		self.column = column
 		self.row = row
-
-
-
 
 
 if __name__ == "__main__":
@@ -106,8 +98,7 @@ if __name__ == "__main__":
     script, filename = argv
     p = Parser(filename)
 
-    # TODO: Open the file. Assign variables R, C, F, N, B, T.
-
+    # Open the file. Assign variables R, C, F, N, B, T.
     R, C, F, N, B, T = p.parseSimulator()
     print "Rows: %d" % R
     print "Columns: %d" % C
@@ -117,30 +108,86 @@ if __name__ == "__main__":
     print "Time: %d" % T
     print ""
 
+	# Get the rides from the file
     rides = p.parseRides()
 
     for ride in rides:
         print ride
 
-    # TODO DELET
-   
-
-    # TODO: create a simulation object.
+    # Create a simulation object.
     simulation = Simulation(R, C, F, N, B, T)
 
-    d = simulation
+    # Add unassigned rides to the simulation object
+    
 
+    # Generate the car objects and store them in Simulation.cars. 
+    for i in range(1,Simulation.F+1):
 
-
-    # TODO: Generate the car objects and store them in Simulation.cars. 
-    # eg for i in range(1,Simulation.F+1):
-    # generate car object and append to simulation.cars
+    	# generate car object and append to simulation.cars
+		car = Car(i)
+		simulation.cars.append(car)
 
     # TODO: COMPUTATION.
     # SOLVE THE PROBLEM.
     # ?????????????????????????????
 
+    # Assign rides to each car. 
+    for car in simulation.cars:
+
+        can_do_more_rides = True
+
+        while can_do_more_rides:
+
+			# The index of the best ride in simulation.unassigned_rides
+			best_ride = -1
+
+			# The time wasted by the best ride
+			least_time_wasted = sys.maxint 
+
+			# Loop over each ride in unassigned rides
+			for i in range(len(simulation.unassigned_rides)):
+				
+				# Calculate the time the car would waste if it did this ride
+				time_wasted = ride.time_wasted_on_ride(simulation.unassigned_rides[i]))
+
+				# If time_wasted_on_ride returned -1, the ride is NOT possible, so skip this ride.
+				if time_wasted == -1:
+					continue 
+
+				# If we get here, the ride is possible. See if it is less expensive than the current best ride.
+				if time_wasted < least_time_wasted:
+					least_time_wasted = time_wasted
+					best_ride = i
+
+
+			# If we DIDN'T find a ride.... best_ride is still -1. This means the driver can't take any more rides.
+			if best_ride == -1:	
+				can_do_more_rides = false
+			else:
+				# If we DID find a ride to do, add it to the car's ride list and udpate its internal state (position and time).
+				# TODO
+				# Remove the best ride from the unassigned rides list.
+				# TODO
+				# Add this ride to the driver's scheduled rides list.
+				# TODO
+				# Update the car's internal state. (Where it would be and the time the next time it has to pick a ride).
+				# TODO 
+
+			
+				
+		
+				
+
+
+			
+
+			
+        
+
+
+
+
     # TODO: Print our solution to file.
-    simulation.write_solution_to_file()
+    #simulation.write_solution_to_file()
 
 
