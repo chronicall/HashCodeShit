@@ -38,10 +38,8 @@ class Simulation:
                 solution += "%d " % ride.ID
 
             solution += "\n"
-        print solution
 
         outp.write(solution[:-1])
-        print("TODO: implement write solution to file method of Simulation object")
 
     def compute_points(self):
         total_points = 0
@@ -137,10 +135,6 @@ if __name__ == "__main__":
         a, b, x, y, s, f = [x for x in ride]
         simulation.unassigned_rides.append(Ride(a, b, x, y, s, f, i))
         i += 1
-
-    # TODO: COMPUTATION.
-    # SOLVE THE PROBLEM.
-    # ?????????????????????????????
 
     # Assign rides to each car. 
     for car in simulation.cars:

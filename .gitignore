@@ -1,5 +1,4 @@
 *.swp
 *.pyc
-*.txt
 scheduler/
 *.zip
