@@ -43,9 +43,20 @@ class Ride:
             return (abs(this.a - this.x) + abs(this.b - this.y))
 
 class Car:
-    def __init__(self, ID):
-        self.ID = ID # the index of this car. From 1 to Simulation.F.
-        self.rides = [] # The simulation should populate this list with the rides that a car will take. 
+	def __init__(self, ID):
+		self.ID = ID # the index of this car. From 1 to Simulation.F.
+		self.rides = [] # The simulation should populate this list with the rides that a car will take. 
+		self.column = 0
+		self.row = 0
+		self.simulation_time = 0
+
+	def time_wasted_on_ride(self, ride):
+
+	def reset(self)
+		column = 0
+		row = 0
+		simulatin_time = 0
+
 
 
 if __name__ == "__main__":
