@@ -55,7 +55,7 @@ class Ride:
         self.s = earliest_start
         self.f = latest_finish
         self.distance = self.compute_distance()
-        self.latest_start = self.f - self.distance
+        self.latest_start = self.f - self.distance - 1 # latest start is actually the time step AFTER the ride must be finished, so subtract 1 
 
     # Compute the distance of this ride (manhattan distance)
     def compute_distance(self):	
@@ -133,8 +133,14 @@ if __name__ == "__main__":
 
     # Assign rides to each car. 
     for car in simulation.cars:
+
         can_do_more_rides = True
         while can_do_more_rides:
+
+			# If the unassigned rides list is empty, break.
+			if len(simulation.unassigned_rides)==0:
+				break
+		
             # The index of the best ride in simulation.unassigned_rides
             best_ride = -1
 
@@ -158,17 +164,27 @@ if __name__ == "__main__":
             # If we DIDN'T find a ride.... best_ride is still -1. This means the driver can't take any more rides.
             if best_ride == -1:	
                 can_do_more_rides = false
-            else:
-                print "BLAAAAAAAAAAAAAAA I HATE LIFE"
+            else: # We did find a ride to do. Yay!
+                print "Jenna <3 Sandra Ros"
                 pass
                 # If we DID find a ride to do, add it to the car's ride list and udpate its internal state (position and time).
-                # TODO
-                # Remove the best ride from the unassigned rides list.
-                # TODO
-                # Add this ride to the driver's scheduled rides list.
-                # TODO
+
+                # Remove the best ride from the unassigned rides list, and add this ride to the car's scheduled rides list.
+				self.rides.append(simulation.unassigned_rides.pop(best_ride))
+
                 # Update the car's internal state. (Where it would be and the time the next time it has to pick a ride).
-                # TODO 
+
+				# what is t?
+				# least_time_wasted is how long we spent both (a) GETTING to the start location AND (b) waiting for earliest start time
+				# t = least_time_wasted + distance of the ride we chose
+				t = least_time_wasted + self.rides[-1].distance
+
+				# Column and row are the finishing location of the ride
+				column = self.rides[-1].y
+				row = self.rides[-1].x
+				self.update(t, column, row)
+
+
 
     # TODO: Print our solution to file.
     simulation.write_solution_to_file()
