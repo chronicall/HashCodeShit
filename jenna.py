@@ -21,9 +21,10 @@ class Simulation:
         # car_ID_1 ride_id_0 ride_id_1 ... ride_id_n
         # ...
         # car_ID_F ride_id_0 ... ride_id_n
-        def write_solution_to_file(self):
-            print("TODO: implement write solution to file method of Simulation object")
-            pass
+
+    def write_solution_to_file(self):
+        print("TODO: implement write solution to file method of Simulation object")
+        pass
 
 
 class Ride:
@@ -86,5 +87,5 @@ if __name__ == "__main__":
     # ?????????????????????????????
 
     # TODO: Print our solution to file.
-    #simulation.write_solution_to_file()
+    simulation.write_solution_to_file()
 
