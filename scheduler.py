@@ -1,10 +1,32 @@
-# A ride object
-
 import sys
 from sys import argv
 
 from parser import Parser
 
+"""
+Authors: Jenna Riseley, Sandra Ósk Sigríðardóttir Bender, Sandra Rós Hrefnu Jónsdóttir
+    Jenna is studying Electrical Engineering at QUT in Australia. She is doing a semester abroad in Iceland, studying
+    Computer Science at Reykjavík University. She will graduate mid 2020.
+    
+    Sandra Ósk is a student of Software Engineering at Reykjavík University. She is finishing her third year and will graduate this summer.
+    
+    Sandra Rós is a student of Computer Science at Reykjavík University. She is currently on her third year and will graduate this christmas.
+
+Our solution to the scheduling problem works like this:
+
+We have implemented cars and rides as objects, which we parse from the input file and generate objects.
+The cars are kept in a linked list which is a property of a "simulation" class.
+
+To schedule rides, we iterate over the list of cars. Each car will then try to fill up its schedule. 
+The car will select rides that minimise the amount of time it wastes both travelling to the ride start location and waiting for the earliest start time.
+The car will keep track of some state variables (location and time) that reflect "where the car will be and what time it will be once it has finished the rides
+it has assigned itself so far". 
+
+Problems with this solution (room for improvement):
+The main weakness of or solution is that, because each car tries to fill up its schedule in turn,
+if a car is selecting a ride, it has no way of knowing whether there might be another car nearby that would be 
+a more appropriate candidate to select this ride.
+"""
 
 class Simulation:
     def __init__(self, R, C, F, N, B, T):
@@ -23,7 +45,7 @@ class Simulation:
         for i in range(1, self.F + 1):
             self.cars.append(Car(i))
 
-    # TODO: write the solution to file.
+    # write the solution to file.
     # Do this by looping over each car in cars.
     # car_ID_1 ride_id_0 ride_id_1 ... ride_id_n
     # ...
@@ -86,7 +108,7 @@ class Car:
     def time_wasted_on_ride(self, ride):
         # 1. Check whether ride is possible.
         # A ride is possible if (1) the driver can get there before ride.latest_start 
-        distance_to_ride_location = (abs(self.row-ride.a) - abs(self.column - ride.b))
+        distance_to_ride_location = (abs(self.row-ride.a) + abs(self.column - ride.b))
         time_of_arrival_at_start = self.simulation_time + distance_to_ride_location
 
         # Can the car get there before the ride's latest start time?
@@ -185,6 +207,6 @@ if __name__ == "__main__":
                 row = car.rides[-1].x
                 car.update(t, column, row)
 
-    # TODO: Print our solution to file.
+    #Print our solution to file.
     simulation.write_solution_to_file(filename)
 
